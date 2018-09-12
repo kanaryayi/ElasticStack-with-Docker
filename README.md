@@ -7,7 +7,7 @@ Elasticstack'i docker üzerinden çalıştırmak istiyorsanız yapmanız gereken
   ```console
 $ sudo docker-compose up
 ```
-4.1. Eğer hata alıyorsanız alttaki kaynaktan detaylara bakabilirsiniz.
+  4.1. Eğer hata alıyorsanız alttaki kaynaktan detaylara bakabilirsiniz.
 5. Üstteki maddeleri hallettiğinizde, elasticstack portları otomatik olarak atanır:
   * 5000: Logstash TCP input.
   * 9200: Elasticsearch HTTP
