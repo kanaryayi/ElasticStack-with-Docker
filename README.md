@@ -1,4 +1,5 @@
 # Docker ile Elastic Stack Çalıştırmak
+### 10 adımda işi halledin.
 Elasticstack'i docker üzerinden çalıştırmak istiyorsanız yapmanız gereken adımlar şunlardır:
 
 1. [Docker](https://www.docker.com/community-edition#/download) version **1.10.0+** yükleyin.
@@ -8,22 +9,22 @@ Elasticstack'i docker üzerinden çalıştırmak istiyorsanız yapmanız gereken
   ```console
 $ sudo docker-compose up
 ```
-  4.1. Eğer hata alıyorsanız alttaki kaynaktan detaylara bakabilirsiniz.
-5. Üstteki maddeleri hallettiğinizde, elasticstack portları otomatik olarak atanır:
+5. Eğer hata alıyorsanız alttaki kaynaktan detaylara bakabilirsiniz.
+6. Üstteki maddeleri hallettiğinizde, elasticstack portları otomatik olarak atanır:
   * 5000: Logstash TCP input.
   * 9200: Elasticsearch HTTP
   * 9300: Elasticsearch TCP transport
   * 5601: Kibana
-  5.1. Logları logstash TCP portuna göndermeniz gerekir, bunu da uygulamanızın kaynaklarında belirtmeniz gerekebilir.
-  5.2. İkinci bir logstash portu eklemek için “docker-elk” dizinindeki “docker-compose.yaml” dosyasının içinde ki logstash portuna          ikinci veya daha çok port numarası girmek ve aynı zamanda girilen port numaralarını “logstash/pipeline” dizinindeki “pipeline.yaml”    dosyasına da tcp olarak teker teker ekleme yapmanız gerekir.
-6. Logların görsel halini görebilmek için Kibana'da index açmamız gerekir. Bu yüzden komutu konsolda çalıştırıyoruz.
+7. Logları logstash TCP portuna göndermeniz gerekir, bunu da uygulamanızın kaynaklarında belirtmeniz gerekebilir.
+8. İkinci bir logstash portu eklemek için “docker-elk” dizinindeki “docker-compose.yaml” dosyasının içinde ki logstash portuna          ikinci veya daha çok port numarası girmek ve aynı zamanda girilen port numaralarını “logstash/pipeline” dizinindeki “pipeline.yaml”    dosyasına da tcp olarak teker teker ekleme yapmanız gerekir.
+9. Logların görsel halini görebilmek için Kibana'da index açmamız gerekir. Bu yüzden komutu konsolda çalıştırıyoruz.
   ```console
 $ curl -XPOST -D- 'http://localhost:5601/api/saved_objects/index-pattern' \
     -H 'Content-Type: application/json' \
     -H 'kbn-version: 6.3.0' \
     -d '{"attributes":{"title":"logstash-*","timeFieldName":"@timestamp"}}'
 ```
-7. http://localhost:5601 adresine girip Kibana'nın çalıştığına gözatabilirsiniz.
+10. http://localhost:5601 adresine girip Kibana'nın çalıştığına gözatabilirsiniz.
 
 
 # Elastic stack (ELK) on Docker
